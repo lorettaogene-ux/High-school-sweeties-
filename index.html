@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>High School Hearts</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="game-container">
+        <!-- Background Scene Image -->
+        <div id="scene-bg" class="bg-fade"></div>
+
+        <!-- Top Header Bar -->
+        <div id="header-bar">
+            <div class="location-badge">
+                <span class="icon">📍</span> <span id="location-text">High School - Entrance</span>
+            </div>
+            <div class="currency-badge">
+                <span class="icon">💎</span> <span id="diamonds-count">100</span>
+            </div>
+        </div>
+
+        <!-- Main Character Artwork Container -->
+        <div id="character-layer">
+            <div id="character-sprite" class="sprite-enter"></div>
+        </div>
+
+        <!-- Story Dialogue & UI Overlay Container -->
+        <div id="ui-overlay">
+            <div id="dialogue-box" class="glass-panel">
+                <div id="speaker-name" class="speaker-tag">You</div>
+                <p id="dialogue-text">I can't believe it's my first day... I hope I fit in.</p>
+                <button id="next-btn" class="glow-arrow">▼</button>
+            </div>
+
+            <!-- Glowing Interactive Choice Buttons Container -->
+            <div id="choices-container" class="hidden"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
