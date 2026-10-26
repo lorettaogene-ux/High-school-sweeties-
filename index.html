@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>High School Hearts</title>
+    <title>High School Hearts - Episode 2</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Sacramento&display=swap" rel="stylesheet">
 </head>
@@ -13,27 +13,30 @@
         <!-- Background Scene Image -->
         <div id="scene-bg" class="bg-fade"></div>
 
-        <!-- Top Header Bar -->
+        <!-- Top Header HUD -->
         <div id="header-bar">
             <div class="location-badge">
-                <span class="icon">📍</span> <span id="location-text">High School - Entrance</span>
+                <span class="icon">📍</span> <span id="location-text">Kingsview High - Courtyard</span>
+            </div>
+            <div class="stats-badge">
+                <span class="icon">👑</span> <span id="rep-text">Popularity: 50</span>
             </div>
             <div class="currency-badge">
-                <span class="icon">💎</span> <span id="diamonds-count">100</span>
+                <span class="icon">💎</span> <span id="diamonds-count">120</span>
             </div>
         </div>
 
-        <!-- Main Character Artwork Container -->
+        <!-- Character Portrait Artwork Overlay Layer -->
         <div id="character-layer">
-            <div id="character-sprite" class="sprite-enter"></div>
+            <img id="character-sprite" src="" alt="Character Anime Portrait" class="hidden">
         </div>
 
-        <!-- Story Dialogue & UI Overlay Container -->
+        <!-- Interactive Story & UI Controls Overlay -->
         <div id="ui-overlay">
             <div id="dialogue-box" class="glass-panel">
-                <div id="speaker-name" class="speaker-tag">You</div>
-                <p id="dialogue-text">I can't believe it's my first day... I hope I fit in.</p>
-                <button id="next-btn" class="glow-arrow">▼</button>
+                <div id="speaker-name" class="speaker-tag">Maya</div>
+                <p id="dialogue-text">Loading episode...</p>
+                <div id="tap-indicator" class="glow-arrow">TAP TO CONTINUE ▼</div>
             </div>
 
             <!-- Glowing Interactive Choice Buttons Container -->

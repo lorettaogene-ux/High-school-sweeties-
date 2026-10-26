@@ -11,27 +11,27 @@
 body, html {
     width: 100%;
     height: 100%;
-    background-color: #0b0914;
+    background-color: #07040d;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
 
-/* --- GAME CONTAINER (App Container) --- */
+/* --- MOBILE GAME CANVAS CONTAINER --- */
 #game-container {
     position: relative;
     width: 100vw;
     height: 100vh;
     max-width: 450px;
     max-height: 900px;
-    background: #150f24;
+    background: #11091c;
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(236, 72, 153, 0.3);
-    border-radius: 16px;
+    box-shadow: 0 0 35px rgba(236, 72, 153, 0.4), 0 0 70px rgba(139, 92, 246, 0.2);
+    border-radius: 20px;
 }
 
-/* --- BACKGROUND SCENE LAYER --- */
+/* --- SCENE BACKGROUND LAYER --- */
 #scene-bg {
     position: absolute;
     top: 0;
@@ -40,120 +40,130 @@ body, html {
     height: 100%;
     background-size: cover;
     background-position: center;
-    transition: filter 0.5s ease, transform 0.8s ease;
+    transition: filter 0.6s ease, transform 0.8s ease, background-image 0.5s ease-in-out;
 }
 
 .bg-fade {
-    animation: fadeIn 1s ease-in-out;
+    animation: fadeIn 0.8s ease-in-out;
 }
 
-/* --- HEADER HUD --- */
+/* --- TOP HEADER HUD --- */
 #header-bar {
     position: absolute;
-    top: 20px;
-    left: 15px;
-    right: 15px;
+    top: 18px;
+    left: 12px;
+    right: 12px;
     display: flex;
     justify-content: space-between;
+    gap: 6px;
     z-index: 10;
 }
 
-.location-badge, .currency-badge {
-    background: rgba(20, 15, 35, 0.65);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 105, 180, 0.4);
-    padding: 6px 14px;
-    border-radius: 20px;
+.location-badge, .stats-badge, .currency-badge {
+    background: rgba(18, 10, 32, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(244, 114, 182, 0.45);
+    padding: 6px 10px;
+    border-radius: 18px;
     color: #fff;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    box-shadow: 0 0 10px rgba(255, 105, 180, 0.2);
+    box-shadow: 0 0 12px rgba(236, 72, 153, 0.25);
+    white-space: nowrap;
 }
 
-/* --- CHARACTER SPRITE LAYER --- */
+/* --- ANIME CHARACTER PORTRAIT SPRITE LAYER --- */
 #character-layer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 80%;
+    height: 85%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     pointer-events: none;
     z-index: 2;
+    overflow: hidden;
 }
 
 #character-sprite {
-    width: 85%;
-    height: 85%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    transition: all 0.4s ease;
+    max-width: 90%;
+    max-height: 82%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(236, 72, 153, 0.5));
+    transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+    animation: floatCharacter 4s ease-in-out infinite;
 }
 
-/* --- UI & DIALOGUE LAYER --- */
+#character-sprite.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    display: none;
+}
+
+/* --- UI DIALOGUE & CHOICE OVERLAY --- */
 #ui-overlay {
     position: absolute;
-    bottom: 20px;
-    left: 15px;
-    right: 15px;
+    bottom: 18px;
+    left: 14px;
+    right: 14px;
     z-index: 5;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
 .glass-panel {
-    background: rgba(25, 16, 42, 0.75);
-    backdrop-filter: blur(14px);
-    border: 1.5px solid rgba(244, 114, 182, 0.5);
+    background: rgba(22, 12, 38, 0.82);
+    backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(244, 114, 182, 0.6);
     border-radius: 20px;
-    padding: 20px;
+    padding: 18px;
     color: #ffffff;
-    box-shadow: 0 8px 32px 0 rgba(236, 72, 153, 0.3),
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6),
+                0 0 20px rgba(236, 72, 153, 0.25),
                 inset 0 0 15px rgba(244, 114, 182, 0.2);
     position: relative;
+    cursor: pointer;
 }
 
 .speaker-tag {
     position: absolute;
     top: -14px;
-    left: 20px;
-    background: linear-gradient(135deg, #ec4899, #8b5cf6);
-    padding: 3px 16px;
+    left: 18px;
+    background: linear-gradient(135deg, #ec4899, #a855f7);
+    padding: 4px 18px;
     border-radius: 12px;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 0 10px #ec4899;
+    box-shadow: 0 0 12px #ec4899;
 }
 
 #dialogue-text {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-top: 5px;
-    color: #f3e8ff;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-top: 6px;
+    color: #fce7f3;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
 }
 
 .glow-arrow {
-    position: absolute;
-    right: 15px;
-    bottom: 10px;
-    background: none;
-    border: none;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1px;
     color: #f472b6;
-    font-size: 1.2rem;
-    cursor: pointer;
-    animation: bounce 1.2s infinite;
+    margin-top: 10px;
+    text-align: right;
+    animation: pulseText 1.5s infinite;
 }
 
-/* --- GLOWING & SPARKLING CHOICES --- */
+/* --- GLOWING & SPARKLING CHOICE BUTTONS --- */
 #choices-container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     width: 100%;
 }
 
@@ -163,25 +173,26 @@ body, html {
 
 .choice-btn {
     position: relative;
-    background: linear-gradient(135deg, rgba(30, 20, 50, 0.85), rgba(60, 25, 80, 0.85));
+    background: linear-gradient(135deg, rgba(35, 18, 55, 0.92), rgba(70, 25, 95, 0.92));
     border: 1.5px solid #f472b6;
-    border-radius: 30px;
-    padding: 14px 20px;
+    border-radius: 25px;
+    padding: 14px 18px;
     color: #ffffff;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
     text-align: center;
     cursor: pointer;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 15px rgba(244, 114, 182, 0.4), inset 0 0 10px rgba(244, 114, 182, 0.2);
-    transition: transform 0.2s, box-shadow 0.2s;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 16px rgba(244, 114, 182, 0.35), inset 0 0 12px rgba(244, 114, 182, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     overflow: hidden;
 }
 
 .choice-btn:active, .choice-btn:hover {
     transform: scale(1.03);
     border-color: #ffffff;
-    box-shadow: 0 0 25px #ec4899, 0 0 40px #8b5cf6, inset 0 0 15px #ffffff;
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.8), rgba(168, 85, 247, 0.8));
+    box-shadow: 0 0 25px #ec4899, 0 0 45px #8b5cf6, inset 0 0 15px #ffffff;
 }
 
 .sparkle-effect::after {
@@ -189,26 +200,31 @@ body, html {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(244,114,182,0) 70%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(244,114,182,0) 70%);
     transform: translate(-50%, -50%) scale(0);
-    animation: sparkle 0.4s ease-out;
+    animation: sparkleBurst 0.45s ease-out;
     border-radius: 50%;
 }
 
 /* --- ANIMATIONS --- */
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+@keyframes floatCharacter {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; text-shadow: 0 0 8px #ec4899; }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; transform: scale(1.02); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-@keyframes sparkle {
+@keyframes sparkleBurst {
     0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(2.2); opacity: 0; }
 }
